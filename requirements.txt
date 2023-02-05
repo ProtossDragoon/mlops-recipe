@@ -1,0 +1,7 @@
+requests
+pylint
+Flask
+click
+pandas
+tensorflow
+black
