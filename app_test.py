@@ -34,7 +34,7 @@ class TestApp(unittest.TestCase):
                 "Acceleration": 12,
                 "ModelYear": 70,
                 "Country": "USA",
-            }
+            },
         )
         expected = 200
         self.assertEqual(expected, res.status_code)
