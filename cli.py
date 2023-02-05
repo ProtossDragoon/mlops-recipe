@@ -39,7 +39,7 @@ def inference(
     click.echo(click.style(f"입력: \n{x}", bg="green", fg="white"))
     if host:
         click.echo(click.style(f"호스트: {host}", bg="green", fg="white"))
-        result = requests.post(url=host, json=x)
+        result = requests.post(url=host, json=x, timeout=30)
         click.echo(click.style(f"응답: \n{result.text}", bg="red", fg="white"))
     else:
         result = predict(x)

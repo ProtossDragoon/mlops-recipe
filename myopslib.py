@@ -31,7 +31,7 @@ def load_model(p="./mlp-model"):
 def load_dataset(p="./auto-mpg.csv"):
     """데이터를 로드하는 함수"""
     if not os.path.exists(p):
-        logging.info(f"데이터셋이 존재하지 않습니다. 다운로드를 시작합니다.")
+        logging.info("데이터셋이 존재하지 않습니다. 다운로드를 시작합니다.")
         url = "https://raw.githubusercontent.com/ProtossDragoon/flask-docker/master/notebooks/auto-mpg.csv"
         r = requests.get(url, allow_redirects=True, timeout=5)
         open(p, "wb").write(r.content)
@@ -60,7 +60,7 @@ def retrain(p_new="./mlp-model"):
     test_labels = test_features.pop("MPG")
 
     # 추가 학습
-    history = model.fit(train_features, train_labels, validation_split=0.2, epochs=5)
+    model.fit(train_features, train_labels, validation_split=0.2, epochs=5)
 
     # 모델 평가
     test_result = model.evaluate(test_features, test_labels, verbose=0)
