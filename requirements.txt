@@ -3,5 +3,5 @@ pylint
 Flask
 click
 pandas
-tensorflow
+tensorflow>=1.15.0,<3.0.0
 black
