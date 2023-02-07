@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# 내장
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+
 # 서드파티
 import click
 
