@@ -35,7 +35,7 @@ def load_dataset(p="./auto-mpg.csv"):
         url = "https://raw.githubusercontent.com/ProtossDragoon/flask-docker/master/notebooks/auto-mpg.csv"
         r = requests.get(url, allow_redirects=True, timeout=5)
         open(p, "wb").write(r.content)
-        logging.info(f"데이터셋 다운로드 완료: {p}")
+        logging.info("데이터셋 다운로드 완료: %s", p)
     dataset = pd.read_csv(p)
     return dataset
 
@@ -64,7 +64,7 @@ def retrain(p_new="./mlp-model"):
 
     # 모델 평가
     test_result = model.evaluate(test_features, test_labels, verbose=0)
-    logging.debug(f"추가학습 MAE: {test_result}")
+    logging.debug("추가학습 MAE: %s", test_result)
 
     # 모델 저장
     model.save(p_new)
