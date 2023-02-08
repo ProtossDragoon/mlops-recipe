@@ -14,7 +14,7 @@ def home():
 
 @app.route("/hello")
 def hello():
-    return "hello ml!"
+    return "hello ml"
 
 
 @app.route("/predict", methods=["POST"])
