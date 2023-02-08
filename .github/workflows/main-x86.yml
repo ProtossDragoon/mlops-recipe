@@ -51,7 +51,17 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_CONTAINER_REGISTRY }}
 
-      - name: 컨테이너 빌드 후 도커 허브와 깃허브 레지스트리로 동시에 푸시
+      - name: AWS 로그인
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: AWS ECR 로그인
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: 컨테이너 빌드 후 도커 허브, 깃허브 레지스트리, AWS ECR에 동시에 푸시
         uses: docker/build-push-action@v2
         with:
           context: ./
@@ -60,3 +70,4 @@ jobs:
           tags: |
             protossdragoon/mlops-recipe_x86:v1
             ghcr.io/protossdragoon/mlops-recipe_x86:v1
+            637917027048.dkr.ecr.us-east-1.amazonaws.com/mlops-recipe_x86:v1
