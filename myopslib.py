@@ -1,7 +1,5 @@
-# 내장
+# 빌트인
 import os
-
-# 외장
 import logging
 
 # 서드파티
